@@ -17,6 +17,10 @@ type signaler struct {
 	cancel context.CancelFunc
 }
 
+func New() Signaler {
+	return &signaler{}
+}
+
 func (s *signaler) Subscribe() <-chan struct{} {
 	s.lock.Lock()
 	defer s.lock.Unlock()
